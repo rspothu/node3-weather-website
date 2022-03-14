@@ -10,11 +10,13 @@ const forecast = (latitude, longitude, callback) => {
         } else if (body.error) {
             callback('Unable to find location. Try another location!!', undefined);
         } else {
+            console.log(body);
             callback(undefined, {
                 description: body.current.weather_descriptions,
                 temperature: 'It is currently ' + body.current.temperature + 'F.',
                 feelsLike: 'It feels like ' + body.current.feelslike + ' out.',
-                rain: 'There is a ' + body.current.precip + ' chance of rain.'
+                rain: 'There is a ' + body.current.precip + ' chance of rain.',
+                humidity: 'Humidity is ' + body.current.humidity + '.'
             });
         }
     });
